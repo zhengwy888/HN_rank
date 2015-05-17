@@ -1,0 +1,112 @@
+Using GPU#0
+--------------------
+nodes=1000 resnorm_width=1000 data_dir=data trnname=hn_train-p3 tstname=hn_test-p3 reg_L2=1e-4 step_size=0.05 top_dropout=0.5 pooling_type=Max num_pooling=1 test_interval=25 evaluation_fn=perf/hn_1kb2_seq-perf_2015_05_14_20_53_43.csv loss=Square num_iterations=100 step_size_scheduler=Few step_size_decay=0.1 step_size_decay_at=80 mini_batch_size=100 layers=1 random_seed=1 datatype=sparse x_ext=.xsmatvar y_ext=.y momentum=0.9 init_weight=0.01 init_intercept=0 activ_type=Rect resnorm_type=Cross resnorm_alpha=1 resnorm_beta=0.5
+--------------------
+"cnn": 
+   datatype=sparse
+   trnname=hn_train-p3
+   tstname=hn_test-p3
+   data_dir=data
+   x_ext=.xsmatvar
+   y_ext=.y
+   num_batches=1
+
+   evaluation_fn=perf/hn_1kb2_seq-perf_2015_05_14_20_53_43.csv
+   Log:ON
+   gpu_max_threads=1024
+   gpu_max_blocks=65535
+Thu May 14 20:53:43 2015: hn_train-p3 batch#1
+Thu May 14 20:53:44 2015:   #row=90000 #col=2312761 nz per col=2.8217
+Thu May 14 20:53:44 2015: #data = 2000
+Thu May 14 20:53:44 2015: target-min,max=0,1
+Thu May 14 20:53:44 2015: hn_test-p3 batch#1
+Thu May 14 20:53:44 2015:   #row=90000 #col=252076 nz per col=2.6868
+Thu May 14 20:53:44 2015: #data = 200
+Thu May 14 20:53:44 2015: target-min,max=0,1
+Thu May 14 20:53:44 2015: Start ... #train=2000, #test=200
+--------------------
+Thu May 14 20:53:44 2015: Data signature: dim:1;channel:90000;size0:-1;
+Thu May 14 20:53:44 2015: #class=2
+
+   layers=1
+   save_fn=
+   initial_iteration=0
+   test_interval=25
+   num_iterations=100
+   random_seed=1
+   mini_batch_size=100
+   loss=Square
+
+   step_size_scheduler=Few
+   step_size_decay=0.1
+   step_size_decay_at=80
+
+   test_mini_batch_size=100
+Cold-starting (variable-size input) layer#0
+
+   0init_weight=0.01
+   0init_intercept=0
+   0reg_L2=0.0001
+
+   0step_size=0.05
+   0step_sizeb_coeff=1
+   0momentum=0.9
+
+   0nodes=1000
+
+   0activ_type=Rect
+
+   0pooling_type=Max
+   0pooling_stride=1
+
+   0num_pooling=1
+
+   0resnorm_type=Cross
+   0resnorm_alpha=1
+   0resnorm_beta=0.5
+   0resnorm_one=1
+   0resnorm_width=1000
+   --------  weights  --------
+   input dim: 90000
+   output dim: 1000
+   #weights: 90000000
+   ---------------------------
+Cold-starting the top layer
+
+   top_init_weight=0.01
+   top_init_intercept=0
+   top_reg_L2=0.0001
+
+   top_step_size=0.05
+   top_step_sizeb_coeff=1
+   top_momentum=0.9
+
+   top_dropout=0.5
+   ------  top layer  ------
+   input: 1
+   --------  weights  --------
+   input dim: 1000
+   output dim: 2
+   #weights: 2000
+   ---------------------------
+Thu May 14 20:53:54 2015: supervised training: #hidden=1
+Thu May 14 20:53:54 2015: Resetting step-sizes to eta0 ...
+layer#0:cnv/fc:dim=90000x1000,n22,8.99733,nz,90000000,1,absavgw,0.00797749,avgw,-1.75299e-06,absavgi,0,avgi,0,layer#1:cnv/fc:dim=1000x2,n22,0.099232,nz,2000,1,absavgw,0.00798378,avgw,0.000468635,absavgi,0,avgi,0,
+
+Thu May 14 20:54:08 2015: ... 2000: 0.312722231864929201,0.44933051841259002979
+layer#0:cnv/fc:dim=90000x1000,n22,8.98635,nz,90000000,1,absavgw,0.0079726,avgw,-1.7649e-06,absavgi,0.00141034,avgi,-0.000405592,layer#1:cnv/fc:dim=1000x2,n22,0.129403,nz,2000,1,absavgw,0.0091706,avgw,0.00573465,absavgi,0.40712,avgi,0.40712,
+
+Thu May 14 20:54:09 2015:  ite,1,0.762053,0.312722, test-loss,0.251648292541504, perf,0.5
+Thu May 14 20:54:22 2015: ... 2000: 0.25667966365814209873,0.44847631167471407876
+layer#0:cnv/fc:dim=90000x1000,n22,8.96925,nz,90000000,1,absavgw,0.00796503,avgw,-1.77086e-06,absavgi,0.00173113,avgi,-0.000632773,layer#1:cnv/fc:dim=1000x2,n22,0.139093,nz,2000,1,absavgw,0.00954246,avgw,0.00643649,absavgi,0.470231,avgi,0.470231,
+
+Thu May 14 20:54:23 2015:  ite,2,0.705156,0.25668
+Thu May 14 20:54:36 2015: ... 2000: 0.25128540420532224919,0.44758267401605850155
+layer#0:cnv/fc:dim=90000x1000,n22,8.95139,nz,90000000,1,absavgw,0.0079572,avgw,-1.77342e-06,absavgi,0.00183411,avgi,-0.000760467,layer#1:cnv/fc:dim=1000x2,n22,0.133869,nz,2000,1,absavgw,0.00936068,avgw,0.00579127,absavgi,0.43012,avgi,0.43012,
+
+Thu May 14 20:54:37 2015:  ite,3,0.698868,0.251285
+throwIfError: _AzParr::free_alloc AzPmat::reform_noinit inp_num=222983000  
+ cudaGetErrorString returned out of memory
+!cuda error! : (Detected in _AzParr::free_alloc) 
+ AzPmat::reform_noinit inp_num=222983000
+

@@ -1,0 +1,183 @@
+Using GPU#0
+--------------------
+nodes=600 resnorm_width=600 data_dir=data trnname=hn_train- tstname=hn_test- data_ext0=p2 data_ext1=p3 reg_L2=0 top_reg_L2=1e-3 step_size=0.25 top_dropout=0.5 test_interval=2 evaluation_fn=perf/hn_1kb2_seq2-perf_2015_05_14_19_31_41.csv extension=multi conn0=0-top conn1=1-top loss=Square num_iterations=100 step_size_scheduler=Few step_size_decay=0.1 step_size_decay_at=80 mini_batch_size=100 layers=2 random_seed=1 datatype=sparse_multi x_ext=.xsmatvar y_ext=.y 0dataset_no=0 1dataset_no=1 momentum=0.9 init_weight=0.01 init_intercept=0 resnorm_type=Cross resnorm_alpha=1 resnorm_beta=0.5 pooling_type=Max num_pooling=1 activ_type=Rect
+--------------------
+"cnn": 
+   datatype=sparse_multi
+   trnname=hn_train-
+   tstname=hn_test-
+   data_ext0=p2
+   data_ext1=p3
+
+   data_dir=data
+   x_ext=.xsmatvar
+   y_ext=.y
+   num_batches=1
+
+   extension=multi
+   evaluation_fn=perf/hn_1kb2_seq2-perf_2015_05_14_19_31_41.csv
+   Log:ON
+   gpu_max_threads=1024
+   gpu_max_blocks=65535
+Thu May 14 19:31:41 2015: hn_train-p2 batch#1
+Thu May 14 19:31:42 2015:   #row=60000 #col=2293090 nz per col=1.89727
+Thu May 14 19:31:42 2015: #data = 2000
+Thu May 14 19:31:42 2015: target-min,max=0,1
+Thu May 14 19:31:42 2015: Checking data compatibility between batches ... 
+Thu May 14 19:31:42 2015: hn_train-p3 batch#1
+Thu May 14 19:31:42 2015:   #row=90000 #col=2312761 nz per col=2.8217
+Thu May 14 19:31:42 2015: #data = 2000
+Thu May 14 19:31:42 2015: Checking data compatibility between batches ... 
+Thu May 14 19:31:42 2015: hn_test-p2 batch#1
+Thu May 14 19:31:42 2015:   #row=60000 #col=246625 nz per col=1.83079
+Thu May 14 19:31:42 2015: #data = 200
+Thu May 14 19:31:42 2015: target-min,max=0,1
+Thu May 14 19:31:42 2015: Checking data compatibility between batches ... 
+Thu May 14 19:31:42 2015: hn_test-p3 batch#1
+Thu May 14 19:31:42 2015:   #row=90000 #col=252076 nz per col=2.6868
+Thu May 14 19:31:42 2015: #data = 200
+Thu May 14 19:31:42 2015: Checking data compatibility between batches ... 
+Thu May 14 19:31:42 2015: Start ... #train=2000, #test=200
+--------------------
+Thu May 14 19:31:42 2015: Data signature: [0]dim:1;channel:60000;size0:-1;[1]dim:1;channel:90000;size0:-1;
+Thu May 14 19:31:42 2015: #class=2
+
+   layers=2
+   save_fn=
+   initial_iteration=0
+   test_interval=2
+   num_iterations=100
+   random_seed=1
+   mini_batch_size=100
+   loss=Square
+
+   step_size_scheduler=Few
+   step_size_decay=0.1
+   step_size_decay_at=80
+
+   test_mini_batch_size=100
+
+   conn0=0-top
+   conn1=1-top
+
+   0dataset_no=0
+Cold-starting (variable-size input) layer#0
+
+   0init_weight=0.01
+   0init_intercept=0
+   0reg_L2=0
+
+   0step_size=0.25
+   0step_sizeb_coeff=1
+   0momentum=0.9
+
+   0nodes=600
+
+   0activ_type=Rect
+
+   0pooling_type=Max
+   0pooling_stride=1
+
+   0num_pooling=1
+
+   0resnorm_type=Cross
+   0resnorm_alpha=1
+   0resnorm_beta=0.5
+   0resnorm_one=1
+   0resnorm_width=600
+   --------  weights  --------
+   input dim: 60000
+   output dim: 600
+   #weights: 36000000
+   ---------------------------
+
+   1dataset_no=1
+Cold-starting (variable-size input) layer#1
+
+   1init_weight=0.01
+   1init_intercept=0
+   1reg_L2=0
+
+   1step_size=0.25
+   1step_sizeb_coeff=1
+   1momentum=0.9
+
+   1nodes=600
+
+   1activ_type=Rect
+
+   1pooling_type=Max
+   1pooling_stride=1
+
+   1num_pooling=1
+
+   1resnorm_type=Cross
+   1resnorm_alpha=1
+   1resnorm_beta=0.5
+   1resnorm_one=1
+   1resnorm_width=600
+   --------  weights  --------
+   input dim: 90000
+   output dim: 600
+   #weights: 54000000
+   ---------------------------
+Cold-starting connector#3  (0,1) -> (2)
+Cold-starting the top layer
+
+   top_init_weight=0.01
+   top_init_intercept=0
+   top_reg_L2=0.001
+
+   top_step_size=0.25
+   top_step_sizeb_coeff=1
+   top_momentum=0.9
+
+   top_dropout=0.5
+   ------  top layer  ------
+   input: 1
+   --------  weights  --------
+   input dim: 1200
+   output dim: 2
+   #weights: 2400
+   ---------------------------
+Thu May 14 19:31:52 2015: supervised training: #hidden=2
+Thu May 14 19:31:52 2015: Resetting step-sizes to eta0 ...
+layer#0:cnv/fc:dim=60000x600,n22,5.99865,nz,36000000,1,absavgw,0.00797758,avgw,-3.84379e-06,absavgi,0,avgi,0,layer#1:cnv/fc:dim=90000x600,n22,8.99682,nz,54000000,1,absavgw,0.00797742,avgw,-3.59129e-07,absavgi,0,avgi,0,layer#2:cnv/fc:dim=1200x2,n22,0.119264,nz,2400,1,absavgw,0.00798457,avgw,0.000461855,absavgi,0,avgi,0,
+
+Thu May 14 19:32:08 2015: ... 2000: 0.31013276672363282449,0.00014976003766059876334
+layer#0:cnv/fc:dim=60000x600,n22,5.99811,nz,36000000,1,absavgw,0.00797735,avgw,-4.08981e-06,absavgi,0.00756987,avgi,-0.00750213,layer#1:cnv/fc:dim=90000x600,n22,8.99633,nz,54000000,1,absavgw,0.00797723,avgw,-5.55858e-07,absavgi,0.00626184,avgi,-0.00614032,layer#2:cnv/fc:dim=1200x2,n22,0.14976,nz,2400,1,absavgw,0.00883336,avgw,0.00407144,absavgi,0.300445,avgi,0.300445,
+
+Thu May 14 19:32:10 2015:  ite,1,0.310283,0.310133, test-loss,0.266446971893311, perf,0.495
+Thu May 14 19:32:24 2015: ... 2000: 0.26772084140777585581,0.00022731535136699676514
+layer#0:cnv/fc:dim=60000x600,n22,5.99775,nz,36000000,1,absavgw,0.00797713,avgw,-4.29984e-06,absavgi,0.0141266,avgi,-0.0139622,layer#1:cnv/fc:dim=90000x600,n22,8.99597,nz,54000000,1,absavgw,0.0079771,avgw,-7.20224e-07,absavgi,0.0115221,avgi,-0.0112656,layer#2:cnv/fc:dim=1200x2,n22,0.227315,nz,2400,1,absavgw,0.0109027,avgw,0.00438978,absavgi,0.451433,avgi,0.451433,
+
+Thu May 14 19:32:26 2015:  ite,2,0.267948,0.267721, test-loss,0.252940120697021, perf,0.5
+Thu May 14 19:32:41 2015: ... 2000: 0.24827406311035155051,0.00035815775394439699217
+layer#0:cnv/fc:dim=60000x600,n22,5.9977,nz,36000000,1,absavgw,0.00797701,avgw,-4.44345e-06,absavgi,0.0187134,avgi,-0.0184956,layer#1:cnv/fc:dim=90000x600,n22,8.99591,nz,54000000,1,absavgw,0.00797702,avgw,-8.3131e-07,absavgi,0.0153097,avgi,-0.0148542,layer#2:cnv/fc:dim=1200x2,n22,0.358158,nz,2400,1,absavgw,0.0138588,avgw,0.00316752,absavgi,0.474411,avgi,0.474411,
+
+Thu May 14 19:32:42 2015:  ite,3,0.248632,0.248274
+Thu May 14 19:32:57 2015: ... 2000: 0.24796644496917724654,0.00058096426725387571681
+layer#0:cnv/fc:dim=60000x600,n22,5.99802,nz,36000000,1,absavgw,0.00797695,avgw,-4.53758e-06,absavgi,0.0219414,avgi,-0.0215783,layer#1:cnv/fc:dim=90000x600,n22,8.99617,nz,54000000,1,absavgw,0.00797698,avgw,-9.3199e-07,absavgi,0.018978,avgi,-0.01821,layer#2:cnv/fc:dim=1200x2,n22,0.580964,nz,2400,1,absavgw,0.0176966,avgw,0.00188733,absavgi,0.471869,avgi,0.471869,
+
+Thu May 14 19:32:59 2015:  ite,4,0.248547,0.247966, test-loss,0.246290321350098, perf,0.495
+Thu May 14 19:33:14 2015: ... 2000: 0.2428219251632690312,0.00093561649322509770829
+layer#0:cnv/fc:dim=60000x600,n22,5.99867,nz,36000000,1,absavgw,0.00797683,avgw,-4.66055e-06,absavgi,0.0259761,avgi,-0.0254832,layer#1:cnv/fc:dim=90000x600,n22,8.99673,nz,54000000,1,absavgw,0.00797693,avgw,-1.07686e-06,absavgi,0.0238035,avgi,-0.0229576,layer#2:cnv/fc:dim=1200x2,n22,0.935616,nz,2400,1,absavgw,0.0223634,avgw,0.00116236,absavgi,0.48439,avgi,0.48439,
+
+Thu May 14 19:33:14 2015:  ite,5,0.243758,0.242822
+Thu May 14 19:33:29 2015: ... 2000: 0.23549610805511475564,0.0014386672973632813784
+layer#0:cnv/fc:dim=60000x600,n22,5.99976,nz,36000000,1,absavgw,0.00797687,avgw,-4.7522e-06,absavgi,0.0288417,avgi,-0.0284247,layer#1:cnv/fc:dim=90000x600,n22,8.99788,nz,54000000,1,absavgw,0.00797697,avgw,-1.21512e-06,absavgi,0.0284655,avgi,-0.0275601,layer#2:cnv/fc:dim=1200x2,n22,1.43867,nz,2400,1,absavgw,0.0277207,avgw,0.000672538,absavgi,0.492909,avgi,0.492909,
+
+Thu May 14 19:33:31 2015:  ite,6,0.236935,0.235496, test-loss,0.261989688873291, perf,0.505
+Thu May 14 19:33:46 2015: ... 2000: 0.22850318717956544234,0.0020114154815673826633
+layer#0:cnv/fc:dim=60000x600,n22,6.00125,nz,36000000,1,absavgw,0.00797699,avgw,-4.80209e-06,absavgi,0.0309292,avgi,-0.0301002,layer#1:cnv/fc:dim=90000x600,n22,8.99989,nz,54000000,1,absavgw,0.00797714,avgw,-1.35829e-06,absavgi,0.0332442,avgi,-0.0323968,layer#2:cnv/fc:dim=1200x2,n22,2.01142,nz,2400,1,absavgw,0.0329658,avgw,0.000398784,absavgi,0.498971,avgi,0.498971,
+
+Thu May 14 19:33:47 2015:  ite,7,0.230515,0.228503
+Thu May 14 19:34:02 2015: ... 2000: 0.21943219089508056441,0.002848686695098876908
+layer#0:cnv/fc:dim=60000x600,n22,6.00329,nz,36000000,1,absavgw,0.00797723,avgw,-4.84349e-06,absavgi,0.0325858,avgi,-0.0316435,layer#1:cnv/fc:dim=90000x600,n22,9.0032,nz,54000000,1,absavgw,0.00797755,avgw,-1.43151e-06,absavgi,0.0357275,avgi,-0.0351252,layer#2:cnv/fc:dim=1200x2,n22,2.84869,nz,2400,1,absavgw,0.0396903,avgw,0.000228773,absavgi,0.498797,avgi,0.498797,
+
+Thu May 14 19:34:03 2015:  ite,8,0.222281,0.219432, test-loss,0.225832462310791, perf,0.36
+throwIfError: _AzParr::free_alloc AzPmat::reform_noinit inp_num=155705400  
+ cudaGetErrorString returned out of memory
+!cuda error! : (Detected in _AzParr::free_alloc) 
+ AzPmat::reform_noinit inp_num=155705400
+
